@@ -1,9 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Downloader from "./Components/Downloader";
 
 function App() {
   return (
-    <div>Sujal</div>
+    <div className="App">
+        <Downloader></Downloader>
+    </div>
   );
 }
 
