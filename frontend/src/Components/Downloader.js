@@ -26,7 +26,7 @@ function Downloader() {
 }
 
 export default Downloader;
-export {url};
+// export {url};
 
 //Search icons
 // <svg
