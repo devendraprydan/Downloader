@@ -3,16 +3,22 @@ p
   font-size: 60px;
   color:#6f47ab;
 }
+form
+{
+  overflow: hidden;
+  border-radius: 15px;
+  fill: #1A1A1A;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+}
 .search
 {
-  width: 680px;
+  max-width: 100%;
+  width:680px;
   height: 55px;
   padding-left: 20px;
   font-size:larger;
   border-radius: 15px;
-  /* font-weight: bold; */
-  fill: #1A1A1A;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+ 
 }
 input::placeholder
 {
@@ -32,7 +38,8 @@ input::placeholder
   color: white;
   border: none;
   position: absolute;
-  right: 20px;
+  right: 8px;
+  top:0;
 }
 .btn2:hover
 {
@@ -63,8 +70,18 @@ body
 {
   width: 100%;
   max-width: 700px;
-  z-index: 1;
   position: relative;
+}
+
+@media only screen and (max-width: 700px) {
+  p {
+    font-size: 50px;
+  }
+  img
+  {
+    width: 50px;
+    height: 45px;
+  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -73,11 +90,11 @@ body
   }
   img
   {
-    width: 40px;
-    height: 35px;
+    width: 35px;
+    height: 30px;
   }
 }
-
+/* 
 @media only screen and (max-width: 500px) {
   p {
     font-size: 30px;
@@ -87,4 +104,4 @@ body
     width: 30px;
     height: 25px;
   }
-}
+} */

@@ -1,15 +1,22 @@
-// server.mjs
-// import { createServer } from 'node:http';  
+const express = require('express')
+const app = express()
+const port = 5000
+const cors=require('cors');
+const ytdl = require('ytdl-core');
 
-// const server = createServer((req, res) => {
-//   res.writeHead(200, { 'Content-Type': 'text/plain' });
-//   res.end('Hello World!\n');
-//   res.end(url)
-// });
+app.use(express.json());
+app.use(cors())
 
-// // starts a simple http server locally on port 3000
-// server.listen(3000, '127.0.0.1', () => {
-//   console.log('Listening on 127.0.0.1:3000');
-// });
+app.get('/api/get-video-info/:videoId',async(req,res)=>{
+  const {videoId}=req.params;
+  const data=await ytdl.getInfo(videoId);
+  console.log(data);
+})
 
-// // run with `node server.mjs`
+app.get('/', (req, res) => {
+  res.send('Start')
+})
+
+app.listen(port, () => {  
+  console.log(`Example app listening on port ${port}`)
+})

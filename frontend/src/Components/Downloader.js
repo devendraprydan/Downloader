@@ -1,32 +1,49 @@
 import React, { useState } from "react";
+import axios from 'axios';
 
 function Downloader() {
-  const[url,Seturl]=useState("");
-  const eligible=((e)=>{
+  const [url, Seturl] = useState("");
+  const [videoInfo,setvideoInfo]=useState("");
+  const eligible = ((e) => {
     Seturl(e.target.value)
+  })
+
+  const get_video_details=(async(e)=>{
+      e.preventDefault()
+      console.log(url);
+
+      const videoId=url.split("https://youtu.be/")[1];
+      Seturl("");
+
+      try {
+        const {data}=await axios.get(`http://localhost:5000/api/get-video-info/${videoId}`)
+        console.log(data);
+      } catch (error) {
+        console.log(error.response);
+      }
   })
 
   return (
     <>
       <div className="d-flex flex-column justify-content-center align-items-center main">
+
         <div className="head">
-            <p>  <img width="55" height="50" src="https://img.icons8.com/external-kmg-design-glyph-kmg-design/64/1A1A1A/external-download-user-interface-kmg-design-glyph-kmg-design.png" alt="external-download-user-interface-kmg-design-glyph-kmg-design"/> Video Downloader </p>
+          <p>  <img width="55" height="50" src="https://img.icons8.com/external-kmg-design-glyph-kmg-design/64/1A1A1A/external-download-user-interface-kmg-design-glyph-kmg-design.png" alt="external-download-user-interface-kmg-design-glyph-kmg-design" /> Video Downloader </p>
         </div>
-        <div className="d-flex align-items-center container"> 
-            <input type="text" className="form-control me-2 border-2 rounded-10 search" placeholder="Enter Video URL..." value={url} onChange={eligible}  
-            />
-            <input type="submit" value="Download" className="btn2" onClick={(()=>{
-              console.log(url);
-              Seturl("")})} />
-            
+
+        <div className="d-flex align-items-center container">
+          <form onSubmit={get_video_details}>
+            <input type="text" className="form-control me-2 border-2 rounded-10 search" placeholder="Enter Video URL..." value={url} onChange={eligible} />
+            <input type="submit" value="Download" className="btn2"/>
+          </form>
         </div>
-    </div>
+
+      </div>
     </>
-  );  
+  );
 }
 
 export default Downloader;
-// export {url};
 
 //Search icons
 // <svg
@@ -60,5 +77,5 @@ export default Downloader;
 // </g>
 // </svg>
 
- 
+
 

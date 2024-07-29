@@ -1,6 +1,6 @@
 {
   "name": "backend",
-  "type": "module",
+  "type": "commonjs",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,5 +11,14 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "ffmpeg-static": "^5.2.0",
+    "lodash": "^4.17.21",
+    "sanitize-filename": "^1.6.3",
+    "ytdl-core": "^4.11.5"
+  }
 }
