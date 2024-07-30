@@ -1,26 +1,49 @@
 import React, { useState } from "react";
 import axios from 'axios';
+import BounceLoader from 'react-spinners/BounceLoader'
 
 function Downloader() {
   const [url, Seturl] = useState("");
-  const [videoInfo,setvideoInfo]=useState("");
+  const [videoInfo, setvideoInfo] = useState("");
+  const [resu, setResu] = useState("");
+  const [loader, setLoader] = useState(false);
+
   const eligible = ((e) => {
     Seturl(e.target.value)
   })
 
-  const get_video_details=(async(e)=>{
-      e.preventDefault()
-      console.log(url);
+  const get_video_details = (async (e) => {
+    e.preventDefault()
+    console.log(url);
 
-      const videoId=url.split("https://youtu.be/")[1];
-      Seturl("");
+    const longId = url.split("https://youtu.be/")[1];
+    const shortId = url.split("https://youtube.com/shorts/")[1];
 
-      try {
-        const {data}=await axios.get(`http://localhost:5000/api/get-video-info/${videoId}`)
-        console.log(data);
-      } catch (error) {
-        console.log(error.response);
-      }
+    Seturl("");
+
+    var videoId;
+    if (url.includes("shorts")) {
+      videoId = shortId
+    }
+    else {
+      videoId = longId
+    }
+
+    console.log(videoId);
+
+    try {
+
+      setLoader(true);
+
+      const { data } = await axios.get(`http://localhost:5000/api/get-video-info/${videoId}`)
+
+      setLoader(false)
+
+      setvideoInfo(data.videoInfo);
+      setResu(data.videoInfo.lastResu)
+    } catch (error) {
+      console.log(error.response);
+    }
   })
 
   return (
@@ -28,16 +51,31 @@ function Downloader() {
       <div className="d-flex flex-column justify-content-center align-items-center main">
 
         <div className="head">
-          <p>  <img width="55" height="50" src="https://img.icons8.com/external-kmg-design-glyph-kmg-design/64/1A1A1A/external-download-user-interface-kmg-design-glyph-kmg-design.png" alt="external-download-user-interface-kmg-design-glyph-kmg-design" /> Video Downloader </p>
+          <p><img width="55" height="50" src="https://img.icons8.com/external-kmg-design-glyph-kmg-design/64/1A1A1A/external-download-user-interface-kmg-design-glyph-kmg-design.png" alt="external-download-user-interface-kmg-design-glyph-kmg-design" /> Video Downloader </p>
         </div>
 
         <div className="d-flex align-items-center container">
           <form onSubmit={get_video_details}>
             <input type="text" className="form-control me-2 border-2 rounded-10 search" placeholder="Enter Video URL..." value={url} onChange={eligible} />
-            <input type="submit" value="Download" className="btn2"/>
+            <input type="submit" value="Download" className="btn2" />
           </form>
         </div>
-
+        <div className="Info-box">
+          {
+            loader ? <div className="loader">
+              <BounceLoader color="#FDD333" />
+            </div> : videoInfo && <div className=" d-flex">
+              <img src={videoInfo.thumbnailUrl} alt="" height="150px" width="260px" className="thumbnail" />
+              <div className="Info-box2 d-flex py-2 px-3 flex-col">
+                <p className="videoTitle">{videoInfo.title.slice(0, 50)}...</p>
+                <span className="time">Time: 13.40</span>
+                <div>
+                  
+                </div>
+              </div>
+            </div>
+          }
+        </div>
       </div>
     </>
   );
