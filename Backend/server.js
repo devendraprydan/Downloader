@@ -38,31 +38,6 @@ app.get('/api/get-video-info/:videoId',async(req,res)=>{
   })
 })
 
-// app.get('/video-download',async(req,res)=>{
-//   const {id,resu}=req.query;
-//   try {
-//     const {videoDetails:{title},formats}=await ytdl.getInfo(id);
-//     // console.log(formats);
-//     const videoFormate=chain(formats).filter((height,codece)=>{
-//       height && height === parseInt(resu)&& codece ?.startsWith('avcl')
-//     }).orderBy('fps','desc').head().value()
-    
-//     const streams={};
-//     streams.video=ytdl(id,{quality:videoFormate.itag})
-//     streams.audio=ytdl(id,{quality:'highestaudio'})
-
-//     const pipes={
-//       out:1,
-//       err:2,
-//       video:3,
-//       audio:4
-//     }
-
-//   } catch (error) {
-//     console.log(error); 
-//   }
-// })
-
 app.get('/', (req, res) => {
   res.send('Start')
 })

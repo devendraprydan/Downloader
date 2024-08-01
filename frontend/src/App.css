@@ -1,12 +1,24 @@
-p
+.head
 {
-  font-size: 60px;
+  text-align: center;
+  /* background-color: red; */
+  margin-bottom: 25px;
+}
+.heading
+{
+  font-size: 65px;
   color:#333333;
+  font-weight:800;
+}
+p:nth-child(2)
+{
+  font-size: 22px;
+  font-weight: bolder;
 }
 form
 {
   overflow: hidden;
-  border-radius: 15px;
+  border-radius: 40px;
   fill: #1A1A1A;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   margin-bottom: 40px;
@@ -16,25 +28,29 @@ form
   max-width: 100%;
   width:680px;
   height: 55px;
-  padding-left: 20px;
+  padding-left: 25px;
   font-size:larger;
-  border-radius: 12px;
+  border-radius: 40px;
   border: none;
+  background-color: transparent;
+  border: 3px solid white;
+  font-weight:200;
 }
-.search:hover
+.search:focus
 {
-  border:1px solid yellow;
+  background-color: transparent;
+  border:3px solid white;
 }
 input::placeholder
 {
-  font-weight: bold;
+  font-weight:600;
 }
 .btn2
 {
   fill: #1A1A1A;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  width: 110px;
-  height: 55px;
+  width: 30px;
+  height: 30px;
   font-weight: bold;
   border-top-right-radius: 12px; 
   border-bottom-right-radius: 12px;
@@ -43,16 +59,16 @@ input::placeholder
   color: white;
   border: none;
   position: absolute;
-  right: 8px;
-  top:0;
+  right: 26px;
+  top:6px;
+  /* display: none; */
 }
-.btn2:hover
+.search2
 {
-  background-color:#ddb826;
-}
-body
-{
-  background-color:aliceblue;
+  position: absolute;
+  right: 26px;
+  top:6px;
+  cursor: pointer;
 }
 .main
 {
@@ -60,11 +76,15 @@ body
 }
 .navbar
 {
-  background-color:#FDD333;
+  background-color:black;
+  opacity: 0.4;
+  position: fixed;
+  width: 70px;
+  height: 100%;
+  right: 0;
 }
 .link
 {
-  color: red;
   /* font-size:larger; */
   font-weight: bold;
 }
@@ -89,6 +109,15 @@ body
   width:100%;
   margin-top: 20px;
   text-align: center;
+}
+
+body
+{
+  font-family: 'Raleway';
+  background-image: linear-gradient(to bottom right, rgba(123,183,246,255), rgba(128,184,245,255), rgba(215,236,219,255), rgba(242,243,209,255), rgba(251,243,197,255), rgba(255,212,185,255), rgba(255,186,170,255), rgba(255,170,165,255)80%);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
 }
 
 @media only screen and (max-width: 700px) {
@@ -140,6 +169,7 @@ body
   font-size:medium;
   font-weight: bold;
 }
+
 /* 
 @media only screen and (max-width: 500px) {
   p {
