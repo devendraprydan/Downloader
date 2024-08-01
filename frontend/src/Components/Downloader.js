@@ -3,6 +3,7 @@ import axios from 'axios';
 import BounceLoader from 'react-spinners/BounceLoader'
 
 function Downloader() {
+  
   const [url, Seturl] = useState("");
   const [videoInfo, setvideoInfo] = useState("");
   const [resu, setResu] = useState("");
@@ -19,7 +20,7 @@ function Downloader() {
     const longId = url.split("https://youtu.be/")[1];
     const shortId = url.split("https://youtube.com/shorts/")[1];
 
-    Seturl("");
+    // Seturl("");
 
     var videoId;
     if (url.includes("shorts")) {
@@ -46,12 +47,33 @@ function Downloader() {
     }
   })
 
+  const video_downloaded=((e)=>{
+    e.preventDefault()
+    // console.log(url);
+
+    const longId = url.split("https://youtu.be/")[1];
+    const shortId = url.split("https://youtube.com/shorts/")[1];
+
+    var videoId;
+    if (url.includes("shorts")) {
+      videoId = shortId
+    }
+    else {
+      videoId = longId
+    }
+
+    const url=`http://localhost:5000/video-download?id=${videoId}&resu=${resu}`
+    window.location.href=url;
+    // Seturl("");
+  })
+
+ 
   return (
     <>
       <div className="d-flex flex-column justify-content-center align-items-center main">
 
         <div className="head">
-          <p><img width="55" height="50" src="https://img.icons8.com/external-kmg-design-glyph-kmg-design/64/1A1A1A/external-download-user-interface-kmg-design-glyph-kmg-design.png" alt="external-download-user-interface-kmg-design-glyph-kmg-design" /> Video Downloader </p>
+          <p>Fast & Free Downloader</p>
         </div>
 
         <div className="d-flex align-items-center container">
@@ -68,9 +90,15 @@ function Downloader() {
               <img src={videoInfo.thumbnailUrl} alt="" height="150px" width="260px" className="thumbnail" />
               <div className="Info-box2 d-flex py-2 px-3 flex-col">
                 <p className="videoTitle">{videoInfo.title.slice(0, 50)}...</p>
-                <span className="time">Time: 13.40</span>
-                <div>
-                  
+                <div className="time">Time: 13.40</div>
+                <div className="flex gap-4 absolute top-20">
+                  <select className="px-3 py-2 outline-none border-indigo\ rounded-md" name="" id="" onChange={(e)=>setResu(e.target.value)}>
+                    {
+                      videoInfo.videoResu.length>0 && videoInfo.videoResu.map((v,i)=>
+                        <option key={i} value={v}>{v}p</option>)
+                    }
+                  </select>
+                  <button onClick={video_downloaded} className="px-3 py-2 bg-yellow-300 text-">Download</button>
                 </div>
               </div>
             </div>
