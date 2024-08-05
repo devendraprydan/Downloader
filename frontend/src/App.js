@@ -2,7 +2,7 @@ import "./App.css";
 import Downloader from "./Components/Downloader";
 import Navbar from "./Components/Navbar";
 import { useState } from "react";
-// import Top from "./Components/Top";
+import WeatherDateToggle from "./Components/WeatherDateToggle";
 
 function App() {
 
@@ -29,14 +29,11 @@ function App() {
     }
   })
   return (
-    // <div className="App">
     <>
-    {/* <Top/> */}
-    <Navbar Toggle={Toggle} label={label} background={background} text={text} />
+    <WeatherDateToggle/>
+    {/* <Navbar Toggle={Toggle} label={label} background={background} text={text} /> */}
     <Downloader></Downloader>
     </>
-        
-    // </div>
   );
 }
 
