@@ -59,26 +59,26 @@ app.get('/api/video-download', async(req,res)=>{
 })
 
 app.get('/api/video-download2', (req, res) => {
-
   const videoURL = req.query.url;
+  const quality = req.query.quality;
 
-  const process = spawn('C:\\Users\\Devendra Bharvad\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\yt-dlp.exe', ['-f', 'mp4', '-o', '-', videoURL]);
+  const process = spawn('C:\\Users\\Devendra Bharvad\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\yt-dlp.exe', ['-f', 'mp4', '-o', '-', `bestvideo[height<=${quality}]+bestaudio/best[height<=${quality}]`, videoURL]);
 
   process.stdout.on('data', (data) => {
-      res.write(data);
+    res.write(data);
   });
 
   process.stderr.on('data', (data) => {
-      console.error(`stderr: ${data}`);
+    console.error(`stderr: ${data}`);
   });
 
   process.on('close', (code) => {
-      if (code !== 0) {
-          console.log(`Process exited with code ${code}`);
-          res.status(500).send('Error downloading video');
-      } else {
-          res.end();
-      }
+    if (code !== 0) {
+      console.log(`Process exited with code ${code}`);
+      res.status(500).send('Error downloading video');
+    } else {
+      res.end();
+    }
   });
 });
 
