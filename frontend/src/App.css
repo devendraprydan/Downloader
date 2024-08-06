@@ -275,36 +275,33 @@ input:checked + .slider:before {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 220px;
+  width: 180px;
   height: 60px;
   background-color: rgba(255, 255, 255, 0.3);
   position: absolute;
-  right:100px;
+  right:140px;
   border: 2px solid white;
   border-radius: 30px;
   box-sizing: border-box;
   top:17px;
+  font-family: 'Dm-sans';
 }
 .weather
 {
   display: flex;
   justify-content: center;
-  align-items: center;
-  width: 30%;
+  width: 50%;
   font-weight: bold;
-  font-family: 'Dm-sans';
-  font-size: larger;
+  font-size:x-large;
   padding-right: 4px;
 }
 .date-time
 {
   display: flex;
   justify-content: center;
-  align-items: center;
   border-left: 2px solid white;
-  width: 70%;
+  width: 50%;
   font-weight: bold;
-  font-family: 'Dm-sans';
   padding-left: 10px;
 }
 
