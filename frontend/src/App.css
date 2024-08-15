@@ -4,8 +4,7 @@
 .head
 {
   text-align: center;
-  /* background-color: red; */
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 .heading
 {
@@ -13,17 +12,19 @@
   color:#333333;
   font-weight:800;
 }
-p:nth-child(2)
+.semi-heading
 {
   font-size: 22px;
   font-weight: bolder;
 }
 form
 {
-  overflow: hidden;
+  /* overflow: hidden; */
   border-radius: 40px;
   fill: #1A1A1A;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  margin-left: 20px;
+  margin-right: 10px;
 }
 .search
 {
@@ -37,6 +38,7 @@ form
   background-color: rgba(255, 255, 255, 0.2);
   border: 3px solid white;
   font-weight:600;
+  padding-right: 45px;
 }
 .search:focus
 {
@@ -63,7 +65,6 @@ input::placeholder
   position: absolute;
   right: 26px;
   top:6px;
-  /* display: none; */
 }
 .search2
 {
@@ -74,23 +75,39 @@ input::placeholder
 }
 .main
 {
-  height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* background-color: rebeccapurple; */
-  height: 100vh;
+  min-height: 83vh;
   position: relative;
 }
-.navbar
+.navbar-nav
 {
-  background-color:black;
-  opacity: 0.4;
-  position: fixed;
+  background-color: rgba(0, 0, 0, 0.4);
   width: 70px;
-  height: 100%;
+  min-height: 100%;
+  display: flex;
+  padding-top: 30px;
+  flex-direction: column;
+  gap: 5rem;
+  position:fixed;
+  top: 0;
   right: 0;
+  align-items: center;
+}
+.drag-icon
+{
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  border: 3px solid white;
+  flex-direction: column;
+}
+.drag-icon-i
+{
+  border-top: 3.5px solid white;
+  color:transparent;
+  border-radius: 2px;
 }
 .link
 {
@@ -113,10 +130,11 @@ input::placeholder
   position: relative;
   /* background-color: red; */
   height: 100px;
+  margin-right: 20px;
 }
 .privacy-Service
 {
-  font-size:medium !important;
+  font-size:medium;
   text-align: center;
   margin-top: 10px;
 }
@@ -136,67 +154,32 @@ body
   background-image: linear-gradient(to bottom right, rgba(123,183,246,255), rgba(128,184,245,255), rgba(215,236,219,255), rgba(242,243,209,255), rgba(251,243,197,255), rgba(255,212,185,255), rgba(255,186,170,255), rgba(255,170,165,255)80%);
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100vh;
+  min-height: 100vh;
 }
-
-@media only screen and (max-width: 700px) {
-  .heading {
-    font-size: 50px;
-  }
-  img
-  {
-    width: 50px;
-    height: 45px;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  .heading {
-    font-size: 40px;
-  }
-  img
-  {
-    width: 35px;
-    height: 30px;
-  }
-}
-/* .Info-box
-{
-  width: 45%;
-  margin-top: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 240px;
-  font-family: 'DM Sans';
-  display: none; */
-/* } */
 
 .info-box-1
 {
-  /* position: relative; */
-  /* background-color: rgba(255, 255, 255, 0.2); */
-  /* background-color: rebeccapurple; */
   min-height: 240px;
-  max-width:700px;
+  max-width:720px;
   border-radius: 15px;
   border: 3px solid white;
   padding: 15px;
   margin-top: 40px;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   font-family: 'DM Sans';
+  gap: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  margin-right: 80px;
+  margin-left: 20px;
+  margin-bottom: 10px;
 }
 .thumbnail{
-  height: 200px;
-  width: 400px;
+  height: 220px;
+  width:100%;
   border-radius: 15px;
-  /* width: 320px; */
-  /* height: 170px; */
-  /* position: absolute;
-  top: 45px;
-  left: 20px; */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
 }
 .link
 {
@@ -205,18 +188,26 @@ body
 .dropdown
 {
   background-color: rgba(255, 255, 255, 0.2);
-  /* background-color: rebeccapurple; */
   border: 3px solid white;
-  max-width:300px;
-  width: 250px;
+  max-width:250px;
+  width: 82%;
+  height: 43px;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
 }
+
 .download
 {
   background-color: rgba(0, 255, 0, 0.2);
   border: 3px solid green;
   border-radius: 7px;
   font-weight: bold;
+  width: 82%;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  max-width:250px;
 }
 .switch {  
   position: absolute;
@@ -227,11 +218,6 @@ body
   top: 30px; 
   transform: rotate(90deg); 
 }  
-html
-{
-  background-image: linear-gradient(to bottom right, rgba(123,183,246,255), rgba(128,184,245,255), rgba(215,236,219,255), rgba(242,243,209,255), rgba(251,243,197,255), rgba(255,212,185,255), rgba(255,186,170,255), rgba(255,170,165,255)80%);
-  overflow:visible;
-}
 
 .switch input {  
   opacity: 0;  
@@ -305,55 +291,110 @@ input:checked + .slider:before {
   padding-left: 10px;
 }
 
-@media only screen and (max-width: 500px) {
-  .heading {
-    font-size: 30px;
-  }
-  img
+.duration
+{
+  font-size: x-small;
+  background-color: red;
+}
+
+@media only screen and (max-width:1500px) {
+  .heading
   {
-    width: 30px;
-    height: 25px;
+    font-size: 50px;
   }
 }
+
+@media only screen and (max-width:800px) {
+  form
+  {
+    margin-right: 70px;
+    margin-left: 30px;
+  }
+  .search2
+  {
+    right: 85px;
+  }
+  
+}
+
 @media only screen and (max-width: 700px) {
+  .heading {
+    margin-right: 70px;
+  }
+  .privacy-Service
+  {
+    font-size: small;
+    margin-left: 30px;
+    margin-right: 70px;
+  }
   .info-box-1
   {
     flex-direction: column;
-    gap: 2rem;
+    gap: 6rem;
+  }
+  .semi-heading
+  {
+    font-size: 17px;
+    margin-right: 70px;
   }
   .video-title
   {
-    width: 90%;
+    width: 100%;
+    height: 150px;
   }
   .qt
   {
     width:90%;
     text-align: center;
   }
-}
-.progress-container {
-  width: 100%;
-  background-color: #f3f3f3;
-  border-radius: 5px;
-  margin-top: 20px;
-}
-
-.progress-bar {
-  width: 0;
-  height: 20px;
-  background-color: #4caf50;
-  text-align: center;
-  line-height: 20px;
-  color: white;
-  border-radius: 5px;
+  .info
+  {
+    width: 90%;
+  }
+  
 }
 
-.download-complete {
-  margin-top: 20px;
-  text-align: center;
+@media only screen and (max-width: 600px) {
+  .heading {
+    font-size: 30px;
+  }
+  img
+  {
+    width: 35px;
+    height: 30px;
+  }
+  .semi-heading
+  {
+    font-size: 15px;
+  }
 }
 
-.download-complete a {
-  color: #4caf50;
-  text-decoration: none;
+@media only screen and (max-width: 500px) {
+  .heading {
+    font-size: 25px;
+  }
+  img
+  {
+    width: 30px;
+    height: 25px;
+  }
+  .semi-heading
+  {
+    font-size: 12px;
+  }
+  .info-box-1
+  {
+    gap: 2rem;
+  }
+}
+@media only screen and (max-width:370px)
+{
+  .container
+  {
+    right: 90px;
+  }
+  .switch
+  {
+    right: 270px;
+  }
 }

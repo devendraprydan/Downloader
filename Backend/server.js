@@ -4,7 +4,7 @@ const app = express();
 const port = 5000;
 const cors = require('cors');
 const ytdl = require('ytdl-core');
-const { exec, spawn } = require('child_process');
+const { spawn } = require('child_process');
 const fs = require('fs');
 
 app.use(express.json());
@@ -23,19 +23,26 @@ const getResu = (formats) => {
 
 app.get('/api/get-video-info/:id', async (req, res) => {
   const { id } = req.params;
-  const { videoDetails, formats } = await ytdl.getInfo(id);
-  const { title, thumbnails } = videoDetails;
-  const videoResu = getResu(formats);
+  try {
+    const { videoDetails, formats } = await ytdl.getInfo(id);
+    const { title, thumbnails, lengthSeconds } = videoDetails;
+    const videoResu = getResu(formats);
 
-  return res.status(200).json({
-    videoInfo: {
-      title,
-      thumbnailUrl: thumbnails[thumbnails.length - 1].url,
-      videoResu,
-      lastResu: videoResu[0]
-    }
-  });
+    return res.status(200).json({
+      videoInfo: {
+        title,
+        thumbnailUrl: thumbnails[thumbnails.length - 1].url,
+        duration: lengthSeconds,  // Ensure this is correctly sent
+        videoResu,
+        lastResu: videoResu[0]
+      }
+    });
+  } catch (error) {
+    console.error('Error getting video info:', error);
+    res.status(500).json({ error: 'Failed to get video info' });
+  }
 });
+
 
 app.get('/api/video-download2', (req, res) => {
   const videoURL = req.query.url;
@@ -45,8 +52,8 @@ app.get('/api/video-download2', (req, res) => {
 
   const ytDlpPath = 'C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\yt-dlp.exe';
   const args = [
-    '-f',`bestvideo[height<=${quality}]+bestaudio/best[height<=${quality}]`, 
-    '-o', '-', 
+    '-f', `bestvideo[height<=${quality}]+bestaudio/best[height<=${quality}]`,
+    '-o', '-',
     videoURL
   ];
 

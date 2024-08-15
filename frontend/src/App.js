@@ -1,8 +1,8 @@
 import "./App.css";
 import Downloader from "./Components/Downloader";
-import Navbar from "./Components/Navbar";
 import { useState } from "react";
 import WeatherDateToggle from "./Components/WeatherDateToggle";
+import Navbar from "./Components/Navbar";
 
 function App() {
 
@@ -31,8 +31,8 @@ function App() {
   return (
     <>
     <WeatherDateToggle/>
-    {/* <Navbar Toggle={Toggle} label={label} background={background} text={text} /> */}
     <Downloader></Downloader>
+    <Navbar />
     </>
   );
 }

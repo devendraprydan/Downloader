@@ -8,12 +8,25 @@ function Downloader() {
   const [videoInfo, setVideoInfo] = useState(null);
   const [resu, setResu] = useState("");
   const [loader, setLoader] = useState(false);
+  const [duration, setDuration] = useState("");
 
   const eligible = (e) => {
     setUrl(e.target.value);
   };
 
   const { id } = getVideoID(url);
+
+  const formatDuration = (duration) => {
+    const seconds = parseInt(duration, 10);
+    const h = Math.floor(seconds / 3600);
+    const m = Math.floor((seconds % 3600) / 60);
+    const s = seconds % 60;
+
+    return [h, m, s]
+      .map((v) => (v < 10 ? "0" + v : v))
+      .filter((v, i) => v !== "00" || i > 0)
+      .join(":");
+  };
 
   const get_video_details = async (e) => {
     e.preventDefault();
@@ -28,6 +41,7 @@ function Downloader() {
       setLoader(false);
       setVideoInfo(data.videoInfo);
       setResu(data.videoInfo.lastResu);
+      setDuration(formatDuration(data.videoInfo.duration));
     } catch (error) {
       setLoader(false);
       console.log(error.response);
@@ -63,13 +77,9 @@ function Downloader() {
   return (
     <>
       <div className="main">
-        <label className="switch">  
-          <input type="checkbox" id="toggle-switch"/>  
-          <span className="slider round"></span>  
-        </label>  
         <div className="head">
           <p className="heading">Fast & Free Downloader</p>
-          <p>Your instant downloader, Anytime, Anywhere</p>
+          <p className="semi-heading">Your instant downloader, Anytime, Anywhere</p>
         </div>
 
         <div className="container2">
@@ -122,23 +132,23 @@ function Downloader() {
             <BounceLoader color="#FDD333" />
           </div>
         ) : videoInfo ? (
-          <div className="d-flex info-box-1">
+          <div className="info-box-1">
             <div className="video-title flex flex-col w-[60%]">
-              <p className="videoTitle">{videoInfo.title.slice(0, 55)}...</p>
               <img src={videoInfo.thumbnailUrl} alt="" className="thumbnail" />
             </div>
 
-            <div className="flex text-right ml-7 w-[40%] justify-center qt h-[95%]">
-              <div className="flex gap-10 flex-col qt-dow">
-                <p className="time font-semibold">Time: 13:40</p>
+            <div className="flex w-[50%] h-[100%] info">
+              <div className="flex gap-3 flex-col w-[100%] items-center">
+              <p className="font-semibold">{videoInfo.title.slice(0, 55)}...</p>
+                <p className="">Duration: {duration}</p>
                 <select
-                  className="px-3 py-2 border-indigo rounded-md dropdown font-semibold"
+                  className="border-indigo rounded-md dropdown font-semibold"
                   onChange={(e) => setResu(e.target.value)}
                   value={resu}
                 >
                   {videoInfo.videoResu.length > 0 &&
                     videoInfo.videoResu.map((v, i) => (
-                      <option key={i} value={v}>
+                      <option key={i} value={v}> 
                         {v}p
                       </option>
                     ))}
@@ -156,3 +166,4 @@ function Downloader() {
 }
 
 export default Downloader;
+
