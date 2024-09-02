@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
-
+import { Link } from 'react-router-dom';
 export default function Navbar(props) {
 
     const [visible, setVisible] = useState("flex");
@@ -26,10 +26,10 @@ export default function Navbar(props) {
             </div>
             <div className={`circles ${visible} flex-col gap-2`} >
                 <div className="drag-icon h-10 w-10 flex justify-center items-center gap-1">
-                
+                    <Link to="/"><img src="https://www.pngplay.com/wp-content/uploads/8/Youtube-Red-Logo-Background-PNG-Image.png" alt="Not-found" className='logo' /></Link>
                 </div>
-                <div className="drag-icon h-10 w-10 flex justify-center items-center gap-1">
-
+                <div className="drag-icon h-10 w-10 flex justify-center items-center">
+                    <Link to="/InstaDownloader"><img src="https://www.pnguniverse.com/wp-content/uploads/2020/10/Logo-de-instagram-original.png" className='Insta_logo' alt="Not-found" /></Link>
                 </div>
                 <div className="drag-icon h-10 w-10 flex justify-center items-center gap-1">
 

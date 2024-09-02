@@ -398,3 +398,8 @@ input:checked + .slider:before {
     right: 270px;
   }
 }
+ .Insta_logo
+{
+  width: 35px;
+  border-radius: 20px;
+} 
