@@ -76,7 +76,7 @@ const WeatherDateToggle = () => {
     }, []);
 
     return (
-    <div className="top w-[100%] h-[70px] relative flex items-center mb-5">
+    <div className="w-[100%] h-[70px] relative flex items-center mb-5">
         <label className="switch">  
           <input type="checkbox" id="toggle-switch"/>  
           <span className="slider round"></span>  
@@ -84,8 +84,8 @@ const WeatherDateToggle = () => {
       <div className="container bg-purple-500">
             <div className="weather">{weather}</div>
             <div className="date-time flex flex-col">
-                <div style={{ fontWeight: '600', fontSize: '20px' }}>{dateTime.time}</div>
-                <div style={{ fontWeight: '300', fontSize: '10px', fontWeight: 'bold' }}>{dateTime.date}</div>
+                <div className='Time'>{dateTime.time}</div>
+                <div className='Date'>{dateTime.date}</div>
             </div>
         </div>
     </div>
@@ -93,53 +93,6 @@ const WeatherDateToggle = () => {
 };
 
 export default WeatherDateToggle;
-
-
-// app.get('/api/video-download2', (req, res) => {
-//   const videoURL = req.query.url;
-//   const quality = req.query.quality;
-
-//   console.log(`Downloading video from URL: ${videoURL} with quality: ${quality}`);
-
-//   const ytDlpPath = 'C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\yt-dlp.exe';
-//   const args = [
-//     '-f', `bestvideo[height<=${quality}]+bestaudio/best[height<=${quality}]`,
-//     '-o', '-',
-//     videoURL
-//   ];
-
-//   const process = spawn(ytDlpPath, args);
-
-//   // Set headers only once
-//   res.setHeader('Content-Disposition', 'attachment; filename="video.mp4"');
-//   res.setHeader('Content-Type', 'video/mp4');
-
-//   process.stdout.on('data', (data) => {
-//     res.write(data);
-//   });
-
-//   process.stderr.on('data', (data) => {
-//     console.error(`stderr: ${data}`);
-//   });
-
-//   process.on('close', (code) => {
-//     if (code !== 0) {
-//       console.error(`Process exited with code ${code}`);
-//       if (!res.headersSent) {
-//         res.status(500).send('Error downloading video');
-//       }
-//     } else {
-//       res.end();
-//     }
-//   });
-
-//   process.on('error', (err) => {
-//     console.error(`Process error: ${err.message}`);
-//     if (!res.headersSent) {
-//       res.status(500).send('Error processing video download');
-//     }
-//   });
-// });
 
 
 

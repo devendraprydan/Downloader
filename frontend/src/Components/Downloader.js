@@ -134,9 +134,8 @@ function Downloader() {
         ) : videoInfo ? (
           <div className="info-box-1">
             <div className="video-title flex flex-col w-[60%]">
-              <img src={videoInfo.thumbnailUrl} alt="" className="thumbnail" />
+              <img src={videoInfo.thumbnailUrl} className="thumbnail" />
             </div>
-
             <div className="flex w-[50%] h-[100%] info">
               <div className="flex gap-3 flex-col w-[100%] items-center">
               <p className="font-semibold">{videoInfo.title.slice(0, 55)}...</p>

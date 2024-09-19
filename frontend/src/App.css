@@ -19,7 +19,6 @@
 }
 form
 {
-  /* overflow: hidden; */
   border-radius: 40px;
   fill: #1A1A1A;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
@@ -100,18 +99,42 @@ input::placeholder
 {
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 20px;
-  border: 3px solid white;
+  border: 2.3px solid white;
   flex-direction: column;
+  cursor: pointer;
+}
+.drag-icon-insta
+{
+  background: radial-gradient(circle at 30% 107%, 
+  #fdf497 0%, #fdf497 5%, 
+  #fd5949 45%, #d6249f 60%, 
+  #285AEB 90%);
+}
+.drag-icon-facebook
+{
+  background-color:rgba(24,119,242,255);
 }
 .drag-icon-i
 {
-  border-top: 3.5px solid white;
+  border-top: 3px solid white;
   color:transparent;
   border-radius: 2px;
 }
+.drag-icon-twitter
+{
+  width: 22px;
+}
+.Insta_logo
+{
+ width: 30px;
+ border-radius: 20px;
+} 
+.Facebook_logo
+{
+  width: 30px;
+}
 .link
 {
-  /* font-size:larger; */
   font-weight: bold;
 }
 .navbar-toggler
@@ -128,7 +151,6 @@ input::placeholder
   width: 100%;
   max-width: 700px;
   position: relative;
-  /* background-color: red; */
   height: 100px;
   margin-right: 20px;
 }
@@ -145,7 +167,6 @@ input::placeholder
   justify-content: center;
   align-items: center;
   margin-top: 30px;
-  /* background-color: red; */
 }
 
 body
@@ -155,6 +176,7 @@ body
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
+  max-width:100vw;
 }
 
 .info-box-1
@@ -166,7 +188,6 @@ body
   padding: 15px;
   margin-top: 40px;
   display: flex;
-  /* justify-content: center; */
   align-items: center;
   font-family: 'DM Sans';
   gap: 10px;
@@ -211,7 +232,7 @@ body
 }
 .switch {  
   position: absolute;
-  right: 320px; 
+  right: 280px; 
   display: inline-block;  
   width: 60px;  
   height: 29px; 
@@ -265,12 +286,12 @@ input:checked + .slider:before {
   height: 60px;
   background-color: rgba(255, 255, 255, 0.3);
   position: absolute;
-  right:140px;
+  right:100px;
   border: 2px solid white;
   border-radius: 30px;
   box-sizing: border-box;
   top:17px;
-  font-family: 'Dm-sans';
+  font-family:'Dm-sans';
 }
 .weather
 {
@@ -290,7 +311,22 @@ input:checked + .slider:before {
   font-weight: bold;
   padding-left: 10px;
 }
+.Time
+{
+  font-weight:600;
+  font-size: 20px;
+}
+.Date
+{
+  font-Size: 10px;
+  font-Weight: bold;
+}
 
+.guide-Heading
+{
+  font-size:xx-large;
+  font-weight: bold;
+}
 .duration
 {
   font-size: x-small;
@@ -303,7 +339,13 @@ input:checked + .slider:before {
     font-size: 50px;
   }
 }
-
+@media only screen and (max-width:1150px)
+{
+  .guide-Heading
+  {
+    font-size:x-large;
+  }
+}
 @media only screen and (max-width:800px) {
   form
   {
@@ -317,6 +359,16 @@ input:checked + .slider:before {
   
 }
 
+.guide-first
+{
+  min-height: 250px;
+  width: 30%;
+  border: 2px solid white;
+  border-radius: 15px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+}
 @media only screen and (max-width: 700px) {
   .heading {
     margin-right: 70px;
@@ -351,32 +403,102 @@ input:checked + .slider:before {
   {
     width: 90%;
   }
-  
+
+}
+@media only screen and (max-width: 900px)
+{
+  .guide-Heading
+  {
+    text-wrap:balance;
+    font-size:larger;
+  }
+} 
+@media only screen and (max-width: 768px)
+{
+  .switch {
+    right: 220px; /* Adjust right position */
+    width: 40px; /* Decrease the width */
+    height: 20px;
+    bottom: 40px;
+  }
+
+  .slider {
+    border-radius: 20px; /* Adjust border radius */
+  }
+
+  .slider:before {
+    height: 17px; /* Decrease the height */
+    width: 18px; /* Decrease the width */
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(20px); /* Adjust the distance for smaller size */
+  }
+  .Time
+  {
+    font-size: 10px;
+  }
+  .Date
+  {
+    font-size: 6px;
+  }
+  .weather
+  {
+    font-size:medium;
+  }
+  .date-time
+  {
+    font-size: medium !important;
+  }
+  .container
+  {
+    width: 120px;
+    height:42px;
+    top: 18px;
+  }
+  .guide-card-1
+  {
+    flex-direction: column;
+    align-items: center;
+    gap: 0px !important;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  .guide-card-2
+  {
+    flex-direction: column;
+    align-items: center;
+    gap: 0px !important;
+  }
+  .guide-first
+  {
+    width: 60%;
+    margin-top: 20px;
+    margin-bottom: 35px;
+  }
 }
 
 @media only screen and (max-width: 600px) {
   .heading {
     font-size: 30px;
   }
-  img
-  {
-    width: 35px;
-    height: 30px;
-  }
   .semi-heading
   {
     font-size: 15px;
+  }
+  .guide-Heading
+  {
+    font-size:small;
+    text-wrap:balance;
+    margin-right: 70px;
+    margin-left: 30px;
+    /* background: #000; */
   }
 }
 
 @media only screen and (max-width: 500px) {
   .heading {
     font-size: 25px;
-  }
-  img
-  {
-    width: 30px;
-    height: 25px;
   }
   .semi-heading
   {
@@ -385,6 +507,22 @@ input:checked + .slider:before {
   .info-box-1
   {
     gap: 2rem;
+  }
+  .guide-card-1
+  {
+    align-items:baseline;
+    margin-left: 30px;
+    margin-right: 15px;
+  }
+  .guide-card-2
+  {
+    align-items:baseline;
+    margin-left: 30px;
+    margin-right: 15px;
+  }
+  .guide-first
+  {
+    width: 77%;
   }
 }
 @media only screen and (max-width:370px)
@@ -395,11 +533,21 @@ input:checked + .slider:before {
   }
   .switch
   {
-    right: 270px;
+    right:210px ;
   }
 }
- .Insta_logo
+.guide-first >ul>li
 {
-  width: 35px;
-  border-radius: 20px;
-} 
+  list-style-type: disc;
+  margin-left: 35px;
+}
+.guide-first >ul>p
+{
+  list-style-type: disc;
+  margin-left: 10px;
+}
+.guide-first > img
+{
+ border-top-left-radius: 15px;
+ border-top-right-radius: 15px;
+}

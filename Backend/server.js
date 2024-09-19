@@ -2,14 +2,15 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const port = 5000;
-const cors = require('cors');
+const cors =require('cors')
 const ytdl = require('ytdl-core');
 const { spawn } = require('child_process');
 const fs = require('fs');
-const ffmpeg = require('fluent-ffmpeg');
+const ffmpeg = require('fluent-ffmpeg')
 
 app.use(express.json());
 app.use(cors());
+
 
 const getResu = (formats) => {
   let resuArray = [];
@@ -49,7 +50,7 @@ app.get('/api/video-download2', async (req, res) => {
 
   console.log(`Downloading video from URL: ${videoURL} with quality: ${quality}`);
 
-  const ytDlpPath = 'C:\\Users\\Piyush\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\yt-dlp.exe';
+  const ytDlpPath = 'C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\yt-dlp.exe';
   const tempDir = path.join(__dirname, 'downloads');
   if (!fs.existsSync(tempDir)) fs.mkdirSync(tempDir);
 
